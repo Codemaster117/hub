@@ -1,150 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>X Book - Main Menu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amiga Toxica Interactiva</title>
     <style>
         body {
+            background-color: #d4ebf2;
             font-family: Arial, sans-serif;
-            background-color: #1a1a1a;
-            color: white;
             text-align: center;
-            padding-top: 50px;
-        }
-        h1 {
-            margin-bottom: 30px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 120px);
-            gap: 20px;
-            justify-content: center;
-        }
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100px;
-            height: 100px;
-            background-color: #968E85;
-            color: white;
-            text-decoration: none;
-            border-radius: 50%;
-            font-size: 40px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #7f786f;
-            transform: scale(1.1);
         }
 
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: #2c2c2c;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            color: white;
-            width: 300px;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        .close-btn {
-            background-color: #ff5555;
-            padding: 5px 15px;
-            border: none;
-            color: white;
+        h1 {
+            margin-top: 20px;
+            font-size: 28px;
             font-weight: bold;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .btn {
+            background-color: #8e8881;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            color: white;
+            font-size: 18px;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .emoji {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .label {
+            font-size: 16px;
+            font-weight: normal;
         }
     </style>
 </head>
 <body>
-    <h1>X Book Interactive Menu</h1>
-    <div class="grid">
-        <!-- External links -->
-        <a href="https://placeholder1.com" target="_blank" class="btn">📖</a>
-        <a href="https://placeholder2.com" target="_blank" class="btn">📘</a>
-        <a href="https://placeholder3.com" target="_blank" class="btn">📙</a>
 
-        <!-- Pop-ups -->
-        <div class="btn" onclick="openModal('modal4')">📗</div>
-        <div class="btn" onclick="openModal('modal5')">📕</div>
-        <div class="btn" onclick="openModal('modal6')">📚</div>
+    <h1>Amiga Toxica Interactiva</h1>
 
-        <!-- External link -->
-        <a href="https://placeholder7.com" target="_blank" class="btn">📝</a>
-    </div>
-
-    <!-- Modal templates -->
-    <div id="modal4" class="modal">
-        <div class="modal-content">
-            <h2>Popup 4</h2>
-            <p>This is the content for popup 4.</p>
-            <button class="close-btn" onclick="closeModal('modal4')">Close</button>
+    <div class="grid-container">
+        <!-- Button 1 - Link -->
+        <div class="btn" onclick="openLink('https://example.com')">
+            <div class="emoji">📷</div>
+            <div class="label">Foto Toxica</div>
         </div>
-    </div>
 
-    <div id="modal5" class="modal">
-        <div class="modal-content">
-            <h2>Popup 5</h2>
-            <p>This is the content for popup 5.</p>
-            <button class="close-btn" onclick="closeModal('modal5')">Close</button>
+        <!-- Button 2 - Link -->
+        <div class="btn" onclick="openLink('https://example.com')">
+            <div class="emoji">🎵</div>
+            <div class="label">Toca con Creta</div>
         </div>
-    </div>
 
-    <div id="modal6" class="modal">
-        <div class="modal-content">
-            <h2>Popup 6</h2>
-            <p>This is the content for popup 6.</p>
-            <button class="close-btn" onclick="closeModal('modal6')">Close</button>
+        <!-- Button 3 - Link -->
+        <div class="btn" onclick="openLink('https://example.com')">
+            <div class="emoji">📙</div>
+            <div class="label">Libro Naranja</div>
+        </div>
+
+        <!-- Button 4 - Pop-up -->
+        <div class="btn" onclick="showPopup('Pop-up de Botón 4')">
+            <div class="emoji">📗</div>
+            <div class="label">Libro Verde</div>
+        </div>
+
+        <!-- Button 5 - Pop-up -->
+        <div class="btn" onclick="showPopup('Pop-up de Botón 5')">
+            <div class="emoji">📕</div>
+            <div class="label">Libro Rojo</div>
+        </div>
+
+        <!-- Button 6 - Pop-up -->
+        <div class="btn" onclick="showPopup('Pop-up de Botón 6')">
+            <div class="emoji">📚</div>
+            <div class="label">Libros Múltiples</div>
+        </div>
+
+        <!-- Button 7 - Link -->
+        <div class="btn" onclick="openLink('https://example.com')">
+            <div class="emoji">📄</div>
+            <div class="label">Listo para el Goliath?</div>
         </div>
     </div>
 
     <script>
-        function openModal(id) {
-            document.getElementById(id).style.display = 'flex';
+        function openLink(url) {
+            window.open(url, "_blank");
         }
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-        }
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            document.querySelectorAll('.modal').forEach(modal => {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
+
+        function showPopup(message) {
+            alert(message);
         }
     </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
