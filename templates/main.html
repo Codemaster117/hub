@@ -1,143 +1,141 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amiga Toxica Interactiva</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #cde6f5;
-            text-align: center;
-        }
-        h1 {
-            margin-top: 20px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            justify-items: center;
-            margin-top: 30px;
-        }
-        .button {
-            background-color: #968E85;
-            border-radius: 20px;
-            width: 150px;
-            height: 150px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-size: 50px;
-            color: white;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .button:hover {
-            transform: scale(1.05);
-        }
-        .label {
-            margin-top: 8px;
-            font-size: 16px;
-            color: black;
-        }
-
-        /* Modal styling */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.6);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: #968E85;
-            padding: 20px;
-            border-radius: 15px;
-            width: 300px;
-            text-align: center;
-            color: white;
-            font-size: 18px;
-        }
-        .close {
-            background-color: #ff5c5c;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            color: white;
-            font-weight: bold;
-            margin-top: 15px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amiga Toxica Interactiva</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #cce6f4;
+        text-align: center;
+        margin: 0;
+    }
+    h1 {
+        margin-top: 20px;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 50px;
+        justify-items: center;
+        margin: 40px auto;
+        max-width: 900px;
+    }
+    .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .button {
+        background-color: #978f87;
+        border: none;
+        padding: 25px;
+        border-radius: 15px;
+        font-size: 50px;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+    .button:hover {
+        transform: scale(1.1);
+    }
+    .label {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    /* Popup styling */
+    .popup {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+        max-width: 300px;
+        text-align: center;
+    }
+    .popup button {
+        margin-top: 15px;
+        padding: 8px 15px;
+        background-color: #978f87;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
 </head>
 <body>
 
-    <h1>Amiga Toxica Interactiva</h1>
+<h1>Amiga Toxica Interactiva</h1>
 
-    <div class="grid">
-        <!-- Link buttons -->
-        <div onclick="window.open('https://example.com','_blank')" class="button">📷</div>
-        <div onclick="window.open('https://example.com','_blank')" class="button">🎵</div>
-        <div onclick="window.open('https://example.com','_blank')" class="button">📙</div>
-
-        <!-- Modal buttons -->
-        <div onclick="openModal('modal4')" class="button">📗</div>
-        <div onclick="openModal('modal5')" class="button">📕</div>
-        <div onclick="openModal('modal6')" class="button">📚</div>
-
-        <!-- Last link button -->
-        <div onclick="window.open('https://example.com','_blank')" class="button">📝</div>
-    </div>
-
-    <!-- Labels -->
-    <div class="grid" style="margin-top:-20px;">
+<div class="container">
+    <!-- Button 1: Link -->
+    <div class="item">
+        <button class="button" onclick="window.open('https://example.com', '_blank')">📷</button>
         <div class="label">Foto Toxica</div>
+    </div>
+    <!-- Button 2: Link -->
+    <div class="item">
+        <button class="button" onclick="window.open('https://example.com', '_blank')">🎵</button>
         <div class="label">Toca con Creta</div>
+    </div>
+    <!-- Button 3: Link -->
+    <div class="item">
+        <button class="button" onclick="window.open('https://example.com', '_blank')">📕</button>
         <div class="label">Libro 1</div>
+    </div>
+    <!-- Button 4: Popup -->
+    <div class="item">
+        <button class="button" onclick="openPopup('popup1')">📗</button>
         <div class="label">Libro 2</div>
+    </div>
+    <!-- Button 5: Popup -->
+    <div class="item">
+        <button class="button" onclick="openPopup('popup2')">📘</button>
         <div class="label">Libro 3</div>
+    </div>
+    <!-- Button 6: Popup -->
+    <div class="item">
+        <button class="button" onclick="openPopup('popup3')">📒</button>
         <div class="label">Colección</div>
+    </div>
+    <!-- Button 7: Link -->
+    <div class="item">
+        <button class="button" onclick="window.open('https://example.com', '_blank')">📝</button>
         <div class="label">Listo para el Goliath?</div>
     </div>
+</div>
 
-    <!-- Modals -->
-    <div id="modal4" class="modal">
-        <div class="modal-content">
-            📗 Contenido del libro 2
-            <br>
-            <button class="close" onclick="closeModal('modal4')">Cerrar</button>
-        </div>
-    </div>
-    <div id="modal5" class="modal">
-        <div class="modal-content">
-            📕 Contenido del libro 3
-            <br>
-            <button class="close" onclick="closeModal('modal5')">Cerrar</button>
-        </div>
-    </div>
-    <div id="modal6" class="modal">
-        <div class="modal-content">
-            📚 Contenido de la colección
-            <br>
-            <button class="close" onclick="closeModal('modal6')">Cerrar</button>
-        </div>
-    </div>
+<!-- Popups -->
+<div id="popup1" class="popup">
+    <p>Este es el contenido del popup 1</p>
+    <button onclick="closePopup('popup1')">Cerrar</button>
+</div>
+<div id="popup2" class="popup">
+    <p>Este es el contenido del popup 2</p>
+    <button onclick="closePopup('popup2')">Cerrar</button>
+</div>
+<div id="popup3" class="popup">
+    <p>Este es el contenido del popup 3</p>
+    <button onclick="closePopup('popup3')">Cerrar</button>
+</div>
 
-    <script>
-        function openModal(id) {
-            document.getElementById(id).style.display = "flex";
-        }
-        function closeModal(id) {
-            document.getElementById(id).style.display = "none";
-        }
-    </script>
+<script>
+function openPopup(id) {
+    document.getElementById(id).style.display = 'block';
+}
+function closePopup(id) {
+    document.getElementById(id).style.display = 'none';
+}
+</script>
 
 </body>
 </html>
+
+
