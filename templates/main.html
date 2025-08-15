@@ -6,51 +6,74 @@
     <title>Amiga Toxica Interactiva</title>
     <style>
         body {
-            background-color: #d4ebf2;
             font-family: Arial, sans-serif;
+            background-color: #cde6f5;
             text-align: center;
         }
-
         h1 {
             margin-top: 20px;
-            font-size: 28px;
-            font-weight: bold;
         }
-
-        .grid-container {
+        .grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 40px;
-            max-width: 800px;
-            margin: 40px auto;
+            justify-items: center;
+            margin-top: 30px;
         }
-
-        .btn {
-            background-color: #8e8881;
+        .button {
+            background-color: #968E85;
             border-radius: 20px;
-            padding: 20px;
+            width: 150px;
+            height: 150px;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            color: white;
             cursor: pointer;
-            transition: transform 0.2s ease;
+            transition: transform 0.2s;
+        }
+        .button:hover {
+            transform: scale(1.05);
+        }
+        .label {
+            margin-top: 8px;
+            font-size: 16px;
+            color: black;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #968E85;
+            padding: 20px;
+            border-radius: 15px;
+            width: 300px;
+            text-align: center;
             color: white;
             font-size: 18px;
         }
-
-        .btn:hover {
-            transform: scale(1.05);
-        }
-
-        .emoji {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-
-        .label {
-            font-size: 16px;
-            font-weight: normal;
+        .close {
+            background-color: #ff5c5c;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -58,61 +81,63 @@
 
     <h1>Amiga Toxica Interactiva</h1>
 
-    <div class="grid-container">
-        <!-- Button 1 - Link -->
-        <div class="btn" onclick="openLink('https://fotocontuamiguis.onrender.com')">
-            <div class="emoji">📷</div>
-            <div class="label">Foto Toxica</div>
-        </div>
+    <div class="grid">
+        <!-- Link buttons -->
+        <div onclick="window.open('https://example.com','_blank')" class="button">📷</div>
+        <div onclick="window.open('https://example.com','_blank')" class="button">🎵</div>
+        <div onclick="window.open('https://example.com','_blank')" class="button">📙</div>
 
-        <!-- Button 2 - Link -->
-        <div class="btn" onclick="openLink('https://tocarockconcreta.onrender.com')">
-            <div class="emoji">🎵</div>
-            <div class="label">Toca con Creta</div>
-        </div>
+        <!-- Modal buttons -->
+        <div onclick="openModal('modal4')" class="button">📗</div>
+        <div onclick="openModal('modal5')" class="button">📕</div>
+        <div onclick="openModal('modal6')" class="button">📚</div>
 
-        <!-- Button 3 - Link -->
-        <div class="btn" onclick="openLink('https://rompecabezastoxico.onrender.com')">
-            <div class="emoji">📙</div>
-            <div class="label">Conoces el Insta de Uli?</div>
-        </div>
+        <!-- Last link button -->
+        <div onclick="window.open('https://example.com','_blank')" class="button">📝</div>
+    </div>
 
-        <!-- Button 4 - Pop-up -->
-        <div class="btn" onclick="showPopup('Pop-up de Botón 4')">
-            <div class="emoji">📗</div>
-            <div class="label">Libro Verde</div>
-        </div>
+    <!-- Labels -->
+    <div class="grid" style="margin-top:-20px;">
+        <div class="label">Foto Toxica</div>
+        <div class="label">Toca con Creta</div>
+        <div class="label">Libro 1</div>
+        <div class="label">Libro 2</div>
+        <div class="label">Libro 3</div>
+        <div class="label">Colección</div>
+        <div class="label">Listo para el Goliath?</div>
+    </div>
 
-        <!-- Button 5 - Pop-up -->
-        <div class="btn" onclick="showPopup('Pop-up de Botón 5')">
-            <div class="emoji">📕</div>
-            <div class="label">Libro Rojo</div>
+    <!-- Modals -->
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            📗 Contenido del libro 2
+            <br>
+            <button class="close" onclick="closeModal('modal4')">Cerrar</button>
         </div>
-
-        <!-- Button 6 - Pop-up -->
-        <div class="btn" onclick="showPopup('Pop-up de Botón 6')">
-            <div class="emoji">📚</div>
-            <div class="label">Libros Múltiples</div>
+    </div>
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            📕 Contenido del libro 3
+            <br>
+            <button class="close" onclick="closeModal('modal5')">Cerrar</button>
         </div>
-
-        <!-- Button 7 - Link -->
-        <div class="btn" onclick="openLink('https://quiztoxico.onrender.com')">
-            <div class="emoji">📄</div>
-            <div class="label">Listo para el Goliath?</div>
+    </div>
+    <div id="modal6" class="modal">
+        <div class="modal-content">
+            📚 Contenido de la colección
+            <br>
+            <button class="close" onclick="closeModal('modal6')">Cerrar</button>
         </div>
     </div>
 
     <script>
-        function openLink(url) {
-            window.open(url, "_blank");
+        function openModal(id) {
+            document.getElementById(id).style.display = "flex";
         }
-
-        function showPopup(message) {
-            alert(message);
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
         }
     </script>
 
 </body>
 </html>
-
-
